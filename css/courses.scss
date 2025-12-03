@@ -1,0 +1,279 @@
+@import 'variables';
+
+/* ===================================
+   Courses Section Styles
+   =================================== */
+.courses {
+  padding: 6rem 0;
+  min-height: 100vh;
+
+  .courses__title {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+    color: #ddd;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    @include mobile {
+      gap: 1.5rem;
+    }
+
+    .card {
+      border-radius: $radius-xl;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: calc(33.333% - 2rem);
+      gap: 1rem;
+      background: $card-bg;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+
+      // Staggered animation delay
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      @include desktop {
+        width: calc(50% - 1.5rem);
+      }
+
+      @include tablet {
+        width: calc(50% - 1rem);
+      }
+
+      @include mobile {
+        width: 100%;
+      }
+
+      // Hover Effects
+      transition: $transition-spring;
+      box-shadow: $shadow-card;
+
+      &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: $shadow-card-hover;
+
+        .content {
+          h2 {
+            color: #06d;
+          }
+        }
+
+        img {
+          transform: scale(1.1);
+        }
+
+        .type {
+          animation: pulse 1s infinite;
+        }
+
+        // Shimmer effect on hover
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+          );
+          animation: shimmer 1.5s infinite;
+        }
+      }
+
+      // Image Container
+      .img-container {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: $radius-md;
+        background: $accent-gradient;
+
+        @include mobile {
+          height: 180px;
+        }
+      }
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transition: $transition-spring;
+        display: block;
+      }
+
+      .content {
+        @include flex-column;
+        gap: 1rem;
+        flex: 1;
+
+        h2 {
+          font-size: 2.5rem;
+          margin: 1.5rem 0;
+          color: $text-dark;
+          transition: $transition-smooth;
+          font-weight: 700;
+
+          @include mobile {
+            font-size: 2rem;
+            margin: 1rem 0;
+          }
+        }
+
+        .details {
+          font-size: 1.4rem;
+          line-height: 1.6;
+          color: $text-gray;
+          flex: 1;
+
+          @include mobile {
+            font-size: 1.2rem;
+          }
+        }
+
+        .bottom {
+          @include flex-between;
+          padding: 1.5rem;
+          gap: 1rem;
+          margin-top: auto;
+
+          @include mobile {
+            padding: 1rem;
+            flex-direction: column;
+          }
+
+          .buy {
+            font-size: 1.6rem;
+            color: $text-light;
+            border-radius: $radius-sm;
+            background: $btn-primary;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: $transition-smooth;
+            box-shadow: $shadow-primary;
+
+            @include mobile {
+              width: 100%;
+              font-size: 1.4rem;
+              padding: 1rem 2rem;
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 0;
+              height: 0;
+              border-radius: $radius-circle;
+              background: rgba(255, 255, 255, 0.3);
+              transform: translate(-50%, -50%);
+              transition: width 0.6s, height 0.6s;
+            }
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: $shadow-primary-hover;
+
+              &::before {
+                width: 300px;
+                height: 300px;
+              }
+            }
+          }
+
+          .price {
+            color: #06d;
+            font-size: 2.2rem;
+            font-weight: 700;
+            animation: slideInFromRight 0.8s ease-out;
+
+            @include mobile {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+
+      // Badge Types
+      .type {
+        position: absolute;
+        color: $text-light;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0 0 0 $radius-lg;
+        font-size: 1.2rem;
+        font-weight: 600;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: $shadow-md;
+        animation: slideInFromRight 0.6s ease-out;
+
+        @include mobile {
+          font-size: 1rem;
+          padding: 0.6rem 1.2rem;
+        }
+
+        // Different badge colors based on type
+        &[course-type='featured'] {
+          background: $badge-featured;
+        }
+
+        &[course-type='new'] {
+          background: $badge-new;
+        }
+
+        &[course-type='popular'] {
+          background: $badge-popular;
+        }
+
+        &[course-type='null'] {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Additional Responsive Enhancements
+   =================================== */
+@include large-screen {
+  .courses {
+    .cards {
+      .card {
+        width: calc(25% - 2.25rem);
+      }
+    }
+  }
+}

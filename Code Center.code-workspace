@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../DashBoard"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Code Center"
+  }
+}

@@ -1,0 +1,504 @@
+/* ===================================
+   VARIABLES - Colors & Gradients
+   =================================== */
+/* ===================================
+   VARIABLES - Shadows
+   =================================== */
+/* ===================================
+   VARIABLES - Transitions
+   =================================== */
+/* ===================================
+   VARIABLES - Spacing
+   =================================== */
+/* ===================================
+   VARIABLES - Border Radius
+   =================================== */
+/* ===================================
+   VARIABLES - Z-Index
+   =================================== */
+/* ===================================
+   MIXINS - Responsive Design
+   =================================== */
+/* ===================================
+   MIXINS - Flexbox
+   =================================== */
+/* ===================================
+   MIXINS - Animations
+   =================================== */
+/* ===================================
+   MIXINS - Text
+   =================================== */
+/* ===================================
+   KEYFRAME ANIMATIONS
+   =================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(102, 70, 248, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(102, 70, 248, 0.8);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ===================================
+   Contact Section Styles
+   =================================== */
+.section.contact {
+  padding: 6rem 0;
+  min-height: 100vh;
+  position: relative;
+}
+.section.contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(102, 70, 248, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+.section.contact .common {
+  position: relative;
+  z-index: 1;
+}
+.section.contact .header {
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+.section.contact .header .header__title {
+  background: linear-gradient(135deg, #3b0f4a 0%, #461354 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section.contact .contact--body {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+@media (max-width: 992px) {
+  .section.contact .contact--body {
+    gap: 3rem;
+  }
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+.section.contact .contact--body .contact__form {
+  flex: 1;
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInFromLeft 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+.section.contact .contact--body .contact__form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(135deg, #3b0f4a 0%, #461354 100%);
+}
+.section.contact .contact--body .contact__form:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px);
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__form {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #222;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__form .form .contact__form--modiferes label {
+    font-size: 1.4rem;
+  }
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes input,
+.section.contact .contact--body .contact__form .form .contact__form--modiferes textarea {
+  padding: 1.2rem 1.5rem;
+  font-size: 1.6rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  background: #f6f7fb;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__form .form .contact__form--modiferes input,
+  .section.contact .contact--body .contact__form .form .contact__form--modiferes textarea {
+    padding: 1rem 1.2rem;
+    font-size: 1.4rem;
+  }
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes input:focus,
+.section.contact .contact--body .contact__form .form .contact__form--modiferes textarea:focus {
+  outline: none;
+  border-color: #6646f8;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 70, 248, 0.1);
+  transform: translateY(-2px);
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes input::-moz-placeholder, .section.contact .contact--body .contact__form .form .contact__form--modiferes textarea::-moz-placeholder {
+  color: #999;
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes input::placeholder,
+.section.contact .contact--body .contact__form .form .contact__form--modiferes textarea::placeholder {
+  color: #999;
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes textarea {
+  resize: vertical;
+  min-height: 16rem;
+  max-height: 30rem;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__form .form .contact__form--modiferes textarea {
+    min-height: 12rem;
+  }
+}
+.section.contact .contact--body .contact__form .form .contact__form--modiferes:focus-within label {
+  color: #6646f8;
+  transform: translateX(3px);
+}
+.section.contact .contact--body .contact__form .form button.submit {
+  width: 100%;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, #06d 0%, #0052cc 100%);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(102, 70, 248, 0.2);
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__form .form button.submit {
+    padding: 1.2rem 2rem;
+    font-size: 1.6rem;
+  }
+}
+.section.contact .contact--body .contact__form .form button.submit::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+.section.contact .contact--body .contact__form .form button.submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 70, 248, 0.35);
+}
+.section.contact .contact--body .contact__form .form button.submit:hover::before {
+  width: 400px;
+  height: 400px;
+}
+.section.contact .contact--body .contact__form .form button.submit:active {
+  transform: translateY(0);
+}
+.section.contact .contact--body .contact__form .form button.submit:focus-visible {
+  outline: 3px solid rgba(102, 70, 248, 0.5);
+  outline-offset: 2px;
+}
+.section.contact .contact--body .contact__socials {
+  flex: 1;
+  animation: slideInFromRight 0.8s ease-out 0.2s backwards;
+}
+.section.contact .contact--body .contact__socials .contact__socials--title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #3b0f4a 0%, #461354 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__socials .contact__socials--title {
+    font-size: 2.5rem;
+  }
+}
+.section.contact .contact--body .contact__socials .contact__socials--description {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 3rem;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__socials .contact__socials--description {
+    font-size: 1.6rem;
+  }
+}
+.section.contact .contact--body .contact__socials .contact__socials--media {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__socials .contact__socials--media {
+    gap: 1.5rem;
+  }
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li {
+  position: relative;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__socials .contact__socials--media li a {
+    width: 50px;
+    height: 50px;
+  }
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a.facebook::before {
+  background: linear-gradient(135deg, #1877f2, #0c63d4);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a.instagram::before {
+  background: linear-gradient(135deg, #f093fb, #f5576c, #feda75);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a.whatsapp::before {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a.telegram::before {
+  background: linear-gradient(135deg, #0088cc, #005580);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a:hover::before {
+  opacity: 1;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a:hover svg {
+  color: #fff;
+  transform: scale(1.1) rotate(5deg);
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li a svg {
+  width: 28px;
+  height: 28px;
+  color: #555;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 576px) {
+  .section.contact .contact--body .contact__socials .contact__socials--media li a svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li:nth-child(1) {
+  animation: bounce 2s infinite;
+  animation-delay: 0s;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li:nth-child(2) {
+  animation: bounce 2s infinite;
+  animation-delay: 0.2s;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li:nth-child(3) {
+  animation: bounce 2s infinite;
+  animation-delay: 0.4s;
+}
+.section.contact .contact--body .contact__socials .contact__socials--media li:nth-child(4) {
+  animation: bounce 2s infinite;
+  animation-delay: 0.6s;
+}
+.section.contact .contact--body .contact__socials .contact__info {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: translateX(5px);
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #3b0f4a 0%, #461354 100%);
+  border-radius: 1rem;
+  color: #fff;
+  flex-shrink: 0;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card .icon svg {
+  width: 24px;
+  height: 24px;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card .info-content {
+  flex: 1;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card .info-content h4 {
+  font-size: 1.6rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+.section.contact .contact--body .contact__socials .contact__info .info-card .info-content p {
+  font-size: 1.4rem;
+  color: #555;
+}/*# sourceMappingURL=contact.css.map */

@@ -1,0 +1,572 @@
+// استيراد الـ Variables والـ Mixins
+@import 'variables';
+
+/* ===================================
+   Training Section Styles
+   =================================== */
+.training-section {
+  @include flex-between;
+  gap: 4rem;
+  align-items: center;
+
+  @include desktop {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .training {
+    flex: 1;
+    animation: slideInFromLeft 0.8s ease-out;
+
+    .section__heading {
+      position: relative;
+      padding-left: 1rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 80%;
+        background: $primary-gradient;
+        border-radius: $radius-sm;
+      }
+    }
+
+    .training__btns {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+
+      @include mobile {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .btn {
+        padding: 1.5rem 3rem;
+        font-size: 1.6rem;
+        font-weight: 600;
+        border-radius: $radius-md;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: $transition-spring;
+
+        @include mobile {
+          padding: 1.2rem 2rem;
+          font-size: 1.4rem;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: $radius-circle;
+          background: rgba(255, 255, 255, 0.3);
+          transform: translate(-50%, -50%);
+          transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        &:hover::before {
+          width: 300px;
+          height: 300px;
+        }
+      }
+
+      .primary-btn {
+        background: $btn-primary;
+        color: $text-light;
+        border: none;
+        box-shadow: $shadow-primary;
+
+        &:hover {
+          box-shadow: $shadow-primary-hover;
+          transform: translateY(-3px) scale(1.02);
+        }
+
+        &:active {
+          transform: translateY(0) scale(0.98);
+        }
+      }
+
+      .secondary-btn {
+        background: transparent;
+        color: $primary-dark;
+        border: 2px solid $primary-light;
+        box-shadow: $shadow-sm;
+
+        &:hover {
+          background: $primary-gradient;
+          color: $text-light;
+          border-color: transparent;
+          box-shadow: $shadow-primary-hover;
+          transform: translateY(-3px) scale(1.02);
+        }
+
+        &:active {
+          transform: translateY(0) scale(0.98);
+        }
+      }
+    }
+  }
+
+  .upcoming {
+    flex: 1;
+    animation: slideInFromRight 0.8s ease-out;
+
+    .upcoming__chorts {
+      background: $card-bg;
+      padding: 3rem;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-lg;
+      position: relative;
+      overflow: hidden;
+      transition: $transition-smooth;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(102, 70, 248, 0.1) 0%,
+          transparent 70%
+        );
+        transition: $transition-slow;
+      }
+
+      &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-5px);
+
+        &::before {
+          top: -30%;
+          right: -30%;
+        }
+      }
+
+      .upcoming__chort {
+        @include flex-between;
+        gap: 2rem;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        background: $bg-white;
+        border-radius: $radius-lg;
+        box-shadow: $shadow-sm;
+        position: relative;
+        overflow: hidden;
+        transition: $transition-spring;
+        animation: fadeInUp 0.6s ease-out backwards;
+
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.15}s;
+          }
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 4px;
+          background: $primary-gradient;
+          transform: scaleY(0);
+          transition: $transition-smooth;
+        }
+
+        &:hover {
+          transform: translateX(10px);
+          box-shadow: $shadow-md;
+
+          &::before {
+            transform: scaleY(1);
+          }
+
+          .upcoming__date {
+            background: $primary-gradient;
+            color: $text-light;
+            box-shadow: $glow-primary;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .upcoming__date {
+          @include flex-column;
+          align-items: center;
+          justify-content: center;
+          min-width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+          border-radius: $radius-md;
+          font-weight: 700;
+          color: $primary-dark;
+          box-shadow: $shadow-sm;
+          transition: $transition-spring;
+
+          span {
+            &:first-child {
+              font-size: 1.4rem;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            }
+
+            &:last-child {
+              font-size: 2.8rem;
+              line-height: 1;
+            }
+          }
+        }
+
+        .upcoming__name {
+          flex: 1;
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: $text-dark;
+
+          @include mobile {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Why Section Styles
+   =================================== */
+.why-section {
+  text-align: center;
+
+  .why {
+    margin-bottom: 5rem;
+    animation: fadeInUp 0.8s ease-out;
+
+    .section__heading {
+      @include flex-center;
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .why__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .why__card {
+      background: $bg-white;
+      padding: 3rem 2rem;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-md;
+      position: relative;
+      overflow: hidden;
+      transition: $transition-spring;
+      animation: scaleIn 0.6s ease-out backwards;
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      // تدرجات ألوان مختلفة لكل كارد
+      &:nth-child(1) {
+        &::before {
+          background: $why-card-1;
+        }
+      }
+
+      &:nth-child(2) {
+        &::before {
+          background: $why-card-2;
+        }
+      }
+
+      &:nth-child(3) {
+        &::before {
+          background: $why-card-3;
+        }
+      }
+
+      &:nth-child(4) {
+        &::before {
+          background: $why-card-4;
+        }
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        transition: $transition-smooth;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        opacity: 0;
+        transition: $transition-smooth;
+        z-index: -1;
+      }
+
+      &:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: $shadow-xl;
+
+        &::before {
+          height: 100%;
+          opacity: 0.1;
+        }
+
+        h4 {
+          @include text-gradient;
+        }
+      }
+
+      h4 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+        color: $text-dark;
+        transition: $transition-smooth;
+
+        @include mobile {
+          font-size: 1.8rem;
+        }
+      }
+
+      p {
+        font-size: 1.6rem;
+        line-height: 1.8;
+        color: $text-gray;
+
+        @include mobile {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Field Section Styles
+   =================================== */
+.field-section {
+  @include flex-between;
+  gap: 4rem;
+  align-items: flex-start;
+
+  @include desktop {
+    flex-direction: column;
+  }
+
+  .field {
+    flex: 1;
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+
+  .field__program {
+    flex: 1;
+    animation: slideInFromRight 0.8s ease-out 0.2s backwards;
+
+    .program {
+      background: $card-bg;
+      padding: 3rem;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-lg;
+      position: relative;
+      overflow: hidden;
+      transition: $transition-smooth;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $primary-gradient;
+        opacity: 0;
+        transition: $transition-smooth;
+        z-index: 0;
+      }
+
+      &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-5px);
+
+        &::before {
+          opacity: 0.05;
+        }
+
+        .program__title {
+          @include text-gradient;
+        }
+      }
+
+      .program__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+        color: $text-dark;
+        text-transform: capitalize;
+        position: relative;
+        z-index: 1;
+        transition: $transition-smooth;
+
+        @include mobile {
+          font-size: 2rem;
+        }
+      }
+
+      .program__details {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        position: relative;
+        z-index: 1;
+
+        .detail {
+          @include flex-between;
+          gap: 2rem;
+          padding: 2rem;
+          background: $bg-white;
+          border-radius: $radius-lg;
+          box-shadow: $shadow-sm;
+          transition: $transition-spring;
+          animation: fadeInUp 0.6s ease-out backwards;
+
+          @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+              animation-delay: #{0.4 + $i * 0.1}s;
+            }
+          }
+
+          &:hover {
+            transform: translateX(10px);
+            box-shadow: $shadow-md;
+
+            span {
+              background: $primary-gradient;
+              color: $text-light;
+              box-shadow: $glow-primary;
+            }
+          }
+
+          span {
+            font-size: 3rem;
+            font-weight: 700;
+            color: $primary-dark;
+            min-width: 80px;
+            height: 80px;
+            @include flex-center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: $radius-md;
+            box-shadow: $shadow-sm;
+            transition: $transition-spring;
+
+            @include mobile {
+              font-size: 2.5rem;
+              min-width: 60px;
+              height: 60px;
+            }
+          }
+
+          div {
+            flex: 1;
+            font-size: 1.8rem;
+            color: $text-medium;
+            font-weight: 500;
+
+            @include mobile {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Section Backgrounds
+   =================================== */
+.section {
+  position: relative;
+
+  &:nth-child(odd) {
+    background: $bg-light;
+  }
+
+  &:nth-child(even) {
+    background: linear-gradient(135deg, #fafbfc 0%, #f6f7fb 100%);
+  }
+
+  // Pattern overlay للتصميم
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      circle,
+      rgba(102, 70, 248, 0.03) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+}
+
+/* ===================================
+   Responsive Adjustments
+   =================================== */
+@include tablet {
+  .training-section,
+  .field-section {
+    gap: 3rem;
+  }
+
+  .why-section .why__cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@include mobile {
+  .why-section .why__cards {
+    grid-template-columns: 1fr;
+  }
+}

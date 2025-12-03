@@ -1,0 +1,244 @@
+// استيراد الـ Variables والـ Mixins
+@import 'variables';
+
+/* ===================================
+   Portfolio Section Styles
+   =================================== */
+section.portfolio {
+  padding: 6rem 0;
+  min-height: 100vh;
+  position: relative;
+  
+  // Pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(102, 70, 248, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .common {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out;
+
+    .header__title {
+      @include text-gradient;
+    }
+  }
+
+  .body {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    
+    @include desktop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: $bg-white;
+      padding: 0;
+      border-radius: $radius-xl;
+      overflow: hidden;
+      box-shadow: $shadow-md;
+      transition: $transition-spring;
+      position: relative;
+      cursor: pointer;
+      animation: scaleIn 0.6s ease-out backwards;
+
+      // Staggered animation
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      // Gradient overlay on image
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+        opacity: 0;
+        transition: $transition-smooth;
+        z-index: 1;
+      }
+
+      &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: $shadow-xl;
+
+        &::before {
+          opacity: 1;
+        }
+
+        img {
+          transform: scale(1.1);
+        }
+
+        .card__desc {
+          color: $primary-light;
+          transform: translateY(-5px);
+        }
+
+        .card__overlay {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+
+      // Image container
+      .card__image {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        background: $accent-gradient;
+
+        @include mobile {
+          height: 200px;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition-spring;
+        display: block;
+      }
+
+      // Overlay للمعلومات الإضافية
+      .card__overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: $transition-smooth;
+        z-index: 2;
+        text-align: center;
+
+        .view-btn {
+          background: $text-light;
+          color: $primary-dark;
+          padding: 1rem 2rem;
+          border-radius: $radius-md;
+          font-size: 1.4rem;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          box-shadow: $shadow-md;
+          transition: $transition-smooth;
+
+          &:hover {
+            background: $primary-gradient;
+            color: $text-light;
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .card__desc {
+        padding: 2rem 1.5rem;
+        color: $text-dark;
+        font-size: 1.8rem;
+        text-align: center;
+        font-weight: 600;
+        transition: $transition-smooth;
+        background: $bg-white;
+
+        @include mobile {
+          font-size: 1.6rem;
+          padding: 1.5rem 1rem;
+        }
+      }
+
+      // Different color accents for each card
+      &:nth-child(1) {
+        .card__image {
+          background: $why-card-1;
+        }
+      }
+
+      &:nth-child(2) {
+        .card__image {
+          background: $why-card-2;
+        }
+      }
+
+      &:nth-child(3) {
+        .card__image {
+          background: $why-card-3;
+        }
+      }
+
+      &:nth-child(4) {
+        .card__image {
+          background: $why-card-4;
+        }
+      }
+
+      &:nth-child(5) {
+        .card__image {
+          background: $badge-featured;
+        }
+      }
+
+      &:nth-child(6) {
+        .card__image {
+          background: $badge-new;
+        }
+      }
+    }
+  }
+}
+
+/* ===================================
+   Loading Animation for Images
+   =================================== */
+@keyframes shimmerLoading {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.card__image.loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmerLoading 2s infinite;
+}

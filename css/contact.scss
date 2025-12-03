@@ -1,0 +1,409 @@
+@import 'variables';
+
+/* ===================================
+   Contact Section Styles
+   =================================== */
+.section.contact {
+  padding: 6rem 0;
+  min-height: 100vh;
+  position: relative;
+
+  // Pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(
+      circle,
+      rgba(102, 70, 248, 0.03) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  .common {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out;
+
+    .header__title {
+      @include text-gradient;
+    }
+  }
+
+  .contact--body {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+
+    @include desktop {
+      gap: 3rem;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    // Form Section
+    .contact__form {
+      flex: 1;
+      background: $bg-white;
+      padding: 3rem;
+      border-radius: $radius-xl;
+      box-shadow: $shadow-lg;
+      transition: $transition-smooth;
+      animation: slideInFromLeft 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+
+      // Decorative gradient
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: $primary-gradient;
+      }
+
+      &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-5px);
+      }
+
+      @include mobile {
+        width: 100%;
+        padding: 2rem;
+      }
+
+      .form {
+        .contact__form--modiferes {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          margin-bottom: 2rem;
+
+          label {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: $text-dark;
+            transition: $transition-smooth;
+
+            @include mobile {
+              font-size: 1.4rem;
+            }
+          }
+
+          input,
+          textarea {
+            padding: 1.2rem 1.5rem;
+            font-size: 1.6rem;
+            border: 2px solid #e0e0e0;
+            border-radius: $radius-md;
+            transition: $transition-smooth;
+            font-family: inherit;
+            background: $bg-light;
+
+            @include mobile {
+              padding: 1rem 1.2rem;
+              font-size: 1.4rem;
+            }
+
+            &:focus {
+              outline: none;
+              border-color: $primary-light;
+              background: $bg-white;
+              box-shadow: 0 0 0 3px rgba(102, 70, 248, 0.1);
+              transform: translateY(-2px);
+            }
+
+            &::placeholder {
+              color: #999;
+            }
+          }
+
+          textarea {
+            resize: vertical;
+            min-height: 16rem;
+            max-height: 30rem;
+
+            @include mobile {
+              min-height: 12rem;
+            }
+          }
+
+          // Animation للـ labels
+          &:focus-within label {
+            color: $primary-light;
+            transform: translateX(3px);
+          }
+        }
+
+        button.submit {
+          width: 100%;
+          padding: 1.5rem 3rem;
+          background: $btn-primary;
+          color: $text-light;
+          font-size: 1.8rem;
+          font-weight: 600;
+          border: none;
+          border-radius: $radius-md;
+          cursor: pointer;
+          transition: $transition-spring;
+          box-shadow: $shadow-primary;
+          position: relative;
+          overflow: hidden;
+          margin-top: 1rem;
+
+          @include mobile {
+            padding: 1.2rem 2rem;
+            font-size: 1.6rem;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: $radius-circle;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+          }
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: $shadow-primary-hover;
+
+            &::before {
+              width: 400px;
+              height: 400px;
+            }
+          }
+
+          &:active {
+            transform: translateY(0);
+          }
+
+          &:focus-visible {
+            outline: 3px solid rgba(102, 70, 248, 0.5);
+            outline-offset: 2px;
+          }
+        }
+      }
+    }
+
+    // Socials Section
+    .contact__socials {
+      flex: 1;
+      animation: slideInFromRight 0.8s ease-out 0.2s backwards;
+
+      .contact__socials--title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        @include text-gradient;
+
+        @include mobile {
+          font-size: 2.5rem;
+        }
+      }
+
+      .contact__socials--description {
+        font-size: 1.8rem;
+        line-height: 1.8;
+        color: $text-medium;
+        margin-bottom: 3rem;
+
+        @include mobile {
+          font-size: 1.6rem;
+        }
+      }
+
+      .contact__socials--media {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+
+        @include mobile {
+          gap: 1.5rem;
+        }
+
+        li {
+          position: relative;
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: $bg-white;
+            border-radius: $radius-circle;
+            box-shadow: $shadow-md;
+            transition: $transition-spring;
+            position: relative;
+            overflow: hidden;
+
+            @include mobile {
+              width: 50px;
+              height: 50px;
+            }
+
+            // Different colors for each social
+            &.facebook {
+              &::before {
+                background: linear-gradient(135deg, #1877f2, #0c63d4);
+              }
+            }
+
+            &.instagram {
+              &::before {
+                background: linear-gradient(135deg, #f093fb, #f5576c, #feda75);
+              }
+            }
+
+            &.whatsapp {
+              &::before {
+                background: linear-gradient(135deg, #25d366, #128c7e);
+              }
+            }
+
+            &.telegram {
+              &::before {
+                background: linear-gradient(135deg, #0088cc, #005580);
+              }
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              transition: $transition-smooth;
+              z-index: 0;
+            }
+
+            &:hover {
+              transform: translateY(-5px) scale(1.1);
+              box-shadow: $shadow-xl;
+
+              &::before {
+                opacity: 1;
+              }
+
+              svg {
+                color: $text-light;
+                transform: scale(1.1) rotate(5deg);
+              }
+            }
+
+            svg {
+              width: 28px;
+              height: 28px;
+              color: $text-medium;
+              transition: $transition-spring;
+              position: relative;
+              z-index: 1;
+
+              @include mobile {
+                width: 24px;
+                height: 24px;
+              }
+            }
+          }
+
+          // Animation for each icon
+          &:nth-child(1) {
+            animation: bounce 2s infinite;
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            animation: bounce 2s infinite;
+            animation-delay: 0.2s;
+          }
+
+          &:nth-child(3) {
+            animation: bounce 2s infinite;
+            animation-delay: 0.4s;
+          }
+
+          &:nth-child(4) {
+            animation: bounce 2s infinite;
+            animation-delay: 0.6s;
+          }
+        }
+      }
+
+      // Contact Info Cards
+      .contact__info {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .info-card {
+          background: $bg-white;
+          padding: 2rem;
+          border-radius: $radius-lg;
+          box-shadow: $shadow-sm;
+          transition: $transition-smooth;
+          @include flex-between;
+          gap: 1.5rem;
+
+          &:hover {
+            box-shadow: $shadow-md;
+            transform: translateX(5px);
+          }
+
+          .icon {
+            @include flex-center;
+            width: 50px;
+            height: 50px;
+            background: $primary-gradient;
+            border-radius: $radius-md;
+            color: $text-light;
+            flex-shrink: 0;
+
+            svg {
+              width: 24px;
+              height: 24px;
+            }
+          }
+
+          .info-content {
+            flex: 1;
+
+            h4 {
+              font-size: 1.6rem;
+              color: $text-dark;
+              margin-bottom: 0.5rem;
+            }
+
+            p {
+              font-size: 1.4rem;
+              color: $text-medium;
+            }
+          }
+        }
+      }
+    }
+  }
+}
