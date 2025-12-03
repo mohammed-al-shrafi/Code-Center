@@ -6,8 +6,16 @@
 $primary-dark: #3b0f4a;
 $primary-medium: #461354;
 $primary-light: #6646f8;
-$primary-gradient: linear-gradient(135deg, $primary-dark 0%, $primary-medium 100%);
-$primary-gradient-reverse: linear-gradient(135deg, $primary-medium 0%, $primary-dark 100%);
+$primary-gradient: linear-gradient(
+  135deg,
+  $primary-dark 0%,
+  $primary-medium 100%
+);
+$primary-gradient-reverse: linear-gradient(
+  135deg,
+  $primary-medium 0%,
+  $primary-dark 100%
+);
 
 // Accent Colors
 $accent-color: #6646f8;
@@ -27,7 +35,12 @@ $bg-gray-medium: #e0e0e0;
 
 // Footer Colors
 $footer-bg: linear-gradient(135deg, #e8e8e8 0%, #d5d5d5 100%);
-$footer-border: linear-gradient(90deg, $primary-dark, $primary-light, $primary-dark);
+$footer-border: linear-gradient(
+  90deg,
+  $primary-dark,
+  $primary-light,
+  $primary-dark
+);
 
 // Card Colors
 $card-bg: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
@@ -153,7 +166,7 @@ $z-tooltip: 300;
    =================================== */
 @mixin smooth-hover {
   transition: $transition-smooth;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
@@ -161,7 +174,7 @@ $z-tooltip: 300;
 
 @mixin glow-effect($color: $accent-color) {
   box-shadow: 0 0 20px rgba($color, 0.5);
-  
+
   &:hover {
     box-shadow: 0 0 30px rgba($color, 0.8);
   }
@@ -240,7 +253,8 @@ $z-tooltip: 300;
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -249,7 +263,8 @@ $z-tooltip: 300;
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -267,7 +282,8 @@ $z-tooltip: 300;
 }
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(102, 70, 248, 0.5);
   }
   50% {
@@ -285,7 +301,8 @@ $z-tooltip: 300;
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
